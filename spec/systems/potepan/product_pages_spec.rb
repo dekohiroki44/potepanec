@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'product_pages', type: :system do
   subject { page }
-  before do 
-    @product=create(:product)
+  before do
+    @product = create(:product)
     visit potepan_product_path(@product.id)
   end
   it { is_expected.to have_title "#{@product.name} - BIGBAG Store" }

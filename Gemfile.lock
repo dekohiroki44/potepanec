@@ -292,18 +292,25 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.2)
-    rubocop (0.81.0)
+    rubocop (0.76.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.7.0.1)
+      parser (>= 2.6)
       rainbow (>= 2.2.2, < 4.0)
-      rexml
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-rails (2.5.0)
-      activesupport
+      unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-airbnb (3.0.2)
+      rubocop (~> 0.76.0)
+      rubocop-performance (~> 1.5.0)
+      rubocop-rails (~> 2.3.2)
+      rubocop-rspec (~> 1.30.0)
+    rubocop-performance (1.5.2)
+      rubocop (>= 0.71.0)
+    rubocop-rails (2.3.2)
       rack (>= 1.1)
       rubocop (>= 0.72.0)
+    rubocop-rspec (1.30.1)
+      rubocop (>= 0.60.0)
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.10.1)
@@ -423,7 +430,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    unicode-display_width (1.7.0)
+    unicode-display_width (1.6.1)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -466,8 +473,7 @@ DEPENDENCIES
   rails (~> 5.2.1)
   rails-erd
   rspec-rails
-  rubocop
-  rubocop-rails
+  rubocop-airbnb
   sass-rails (~> 5.0)
   selenium-webdriver
   solidus (~> 2.9.0)
