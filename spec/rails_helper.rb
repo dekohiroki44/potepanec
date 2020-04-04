@@ -43,7 +43,7 @@ Capybara.register_driver :selenium do |app|
         # NOTE: ここでno-sandboxオプション追加する
         args: %w[no-sandbox disable-dev-shm-usage headless disable-gpu window-size=1680,1050],
       }
-    )
+    ),
   })
 end
 Capybara.javascript_driver = :selenium
