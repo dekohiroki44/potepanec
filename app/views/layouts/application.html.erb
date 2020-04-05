@@ -19,9 +19,7 @@
     </div>
     <%= render 'layouts/login_modal'  %>
     <%= render 'layouts/signup_modal'  %>
-    <% if controller.controller_name == 'sample' %>
-      <%= render 'layouts/product_quick_view_modal' %>
-    <% end %>
+    <%= render 'layouts/product_quick_view_modal' if @path.is('sample#index') %>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
