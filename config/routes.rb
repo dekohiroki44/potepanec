@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
   # If you would like to change where this engine is mounted
   # simply change the :at option to something different.
-  #
   # We ask that you don't use the :as option here
   # as Solidus relies on it being the default of "spree"
   mount Spree::Core::Engine, at: '/'
@@ -27,6 +26,7 @@ Rails.application.routes.draw do
     get :tokushoho,                 to: 'sample#tokushoho'
     get :privacy_policy,            to: 'sample#privacy_policy'
     resources :products, only: [:show]
+    resources :categories, only: [:show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'product_pages', type: :request do
+RSpec.describe "Potepan::Products", type: :request do
   describe "GET #show" do
     let(:product) { create(:product) }
 
