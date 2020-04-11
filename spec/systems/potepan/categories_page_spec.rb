@@ -4,10 +4,9 @@ RSpec.describe 'categories_page', type: :system do
   let(:taxon) { create(:taxon) }
   let!(:product) { create(:product, taxons: [taxon]) }
   let!(:taxonomy_test) { create(:taxonomy, name: 'Categories') }
-  let!(:taxon_test) { create(:taxon, taxonomy: taxonomy_test) }
+  let!(:taxon_test) { create(:taxon, parent_id: taxonomy_test.taxons.first.id) }
 
   before do
-    taxon_test = taxonomy_test.taxons.leaves.first
     visit potepan_category_path(taxon.id)
   end
 
