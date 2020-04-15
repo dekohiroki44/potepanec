@@ -1,7 +1,6 @@
 <% provide(:title, @product.name) %>
 
-<%= render 'light_section', product: @product %>
-
+<%= render 'page_header', product: @product %>
 <section class="mainContent clearfix">
   <div class="container">
     <div class="row singleProduct">
@@ -37,7 +36,11 @@
           </div>
           <div class="media-body">
             <ul class="list-inline">
-              <li><a href="product_grid_left_sidebar.html"><i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る</a></li>
+              <% if @product.taxons.first.present? %>
+                <%= link_to potepan_category_path(@product.taxons.first.id) do %>
+                  <li><i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る</li>
+                <% end %>
+              <% end %>
             </ul>
             <h2><%= @product.name %></h2>
             <h3><%= @product.display_price %></h3>
@@ -64,56 +67,6 @@
         </div>
       </div>
     </div>
-    <div class="row productsContent">
-      <div class="col-xs-12">
-        <div class="page-header">
-          <h4>関連商品</h4>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="productBox">
-          <div class="productImage clearfix">
-            <%= image_tag("img/products/products-01.jpg", :alt => "products-img") %>
-          </div>
-          <div class="productCaption clearfix">
-            <h5>Nike Sportswear</h5>
-            <h3>199円</h3>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="productBox">
-          <div class="productImage clearfix">
-            <%= image_tag("img/products/products-02.jpg", :alt => "products-img") %>
-          </div>
-          <div class="productCaption clearfix">
-            <h5>Dip Dyed Sweater</h5>
-            <h3>249円</h3>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="productBox">
-          <div class="productImage clearfix">
-            <%= image_tag("img/products/products-03.jpg", :alt => "products-img") %>
-          </div>
-          <div class="productCaption clearfix">
-            <h5>Scarf Ring Corner</h5>
-            <h3>179円</h3>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="productBox">
-          <div class="productImage clearfix">
-            <%= image_tag("img/products/products-04.jpg", :alt => "products-img") %>
-          </div>
-          <div class="productCaption clearfix">
-            <h5>Sun Buddies</h5>
-            <h3>149円</h3>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render "related_products" %>
   </div>
 </section>
