@@ -16,7 +16,7 @@ RSpec.describe 'products_page', type: :system do
     visit potepan_product_path(product.id)
   end
 
-  it 'display correct contents' do
+  it 'displays correct contents' do
     expect(page).to have_title "#{product.name} - BIGBAG Store"
     expect(page).to have_selector '.page-title', text: product.name
     expect(page).to have_link href: potepan_index_path
@@ -25,15 +25,15 @@ RSpec.describe 'products_page', type: :system do
     expect(all('.item').size).to eq product.images.count
   end
 
-  it 'change page after click 一覧ページへ戻る' do
+  it 'changes page after click 一覧ページへ戻る' do
     click_link '一覧ページへ戻る'
     expect(current_path).to eq potepan_category_path(product.taxons.first.id)
   end
 
   describe 'in related products' do
-    it 'display 4 products in order of strong relationship' do
+    it 'displays 4 products in order of strong relationship' do
       within '.productsContent' do
-        expect(all('.productBox')[0]).to have_content product_most_related.name
+        expect(first('.productBox')).to have_content product_most_related.name
         expect(page).to have_selector '.productBox', count: 4
         expect(page).not_to have_content product_not_related.name
       end

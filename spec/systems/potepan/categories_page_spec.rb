@@ -20,7 +20,7 @@ RSpec.describe 'categories_page', type: :system do
     visit potepan_category_path(taxon.id)
   end
 
-  it 'is displayed correct contents' do
+  it 'displays correct contents' do
     expect(page).to have_title "#{taxon.name} - BIGBAG Store"
     expect(page).to have_selector '.page-title', text: taxon.name
     expect(page).to have_link href: potepan_index_path
@@ -28,13 +28,13 @@ RSpec.describe 'categories_page', type: :system do
     expect(page).to have_content product.price
   end
 
-  it 'change page after click product' do
+  it 'changes page after click product' do
     click_link "#{product.name}"
     expect(current_path).to eq potepan_product_path(product.id)
   end
 
   describe 'in product cutegory', js: true do
-    it 'displayed link of taxon that belongs to taxonomy after click taxonomy ' do
+    it 'displays link of taxon that belongs to taxonomy after click taxonomy ' do
       within '.product-category' do
         click_link "#{taxonomy_category.name}"
         expect(page).to have_link taxon_shoes.name, href: potepan_category_path(taxon_shoes.id)
