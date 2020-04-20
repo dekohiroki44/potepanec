@@ -31,12 +31,14 @@ RSpec.describe 'products_page', type: :system do
   end
 
   describe 'in related products' do
-    it 'displays 4 products in order of strong relationship' do
+    it 'displays 4 related products' do
       within '.productsContent' do
         expect(first('.productBox')).to have_content product_most_related.name
         expect(page).to have_selector '.productBox', count: 4
-        expect(page).not_to have_content product_not_related.name
       end
+    end
+    it 'does not display not related product' do
+      expect(page).not_to have_content product_not_related.name
     end
   end
 end
