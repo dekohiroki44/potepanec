@@ -5,12 +5,12 @@ RSpec.describe 'products_page', type: :system do
   let(:taxon_1) { create(:taxon) }
   let(:taxon_2) { create(:taxon) }
   let!(:taxon_3) { create(:taxon) }
-  let!(:product_most_related) { create(:product, name: 'most_related', taxons: [taxon_1, taxon_2]) }
+  let!(:product_not_related) { create(:product, name: 'not_related', taxons: [taxon_3]) }
   let!(:product_related_1) { create(:product, name: 'related_1', taxons: [taxon_1]) }
   let!(:product_related_2) { create(:product, name: 'related_2', taxons: [taxon_1]) }
   let!(:product_related_3) { create(:product, name: 'related_3', taxons: [taxon_1]) }
   let!(:product_related_4) { create(:product, name: 'related_4', taxons: [taxon_1]) }
-  let!(:product_not_related) { create(:product, name: 'not_related', taxons: [taxon_3]) }
+  let!(:product_most_related) { create(:product, name: 'most_related', taxons: [taxon_1, taxon_2]) }
 
   before do
     visit potepan_product_path(product.id)
