@@ -44,7 +44,8 @@ RUN apt-get update                                                              
   && chown root:root ~/chromedriver                                                                                                     \
   && chmod 755 ~/chromedriver                                                                                                           \
   && mv ~/chromedriver /usr/bin/chromedriver                                                                                            \
-  && apt-get clean
+  && apt-get clean \
+  && apt-get install -y vim
 
 ENTRYPOINT [ \
   "prehook", "bundle install -j3 --path vendor/bundle", "--", \
