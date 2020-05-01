@@ -17,14 +17,3 @@ $(function() {
     autoFocus: true
   });
 });
-
-$(function() {
-  $('.form-control').hover(
-    function() {
-      $('.searchBox').addClass('open');
-    },
-    // function() {
-    //   $(this).removeClass('open');
-    // }
-  );
-});

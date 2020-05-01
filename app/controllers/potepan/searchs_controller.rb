@@ -8,8 +8,8 @@ class Potepan::SearchsController < ApplicationController
     client = HTTPClient.new
     if params[:keyword].present?
       query = { 'keyword': params[:keyword], 'max_num': params[:max_num] }
-      res = client.get(url, query, header)
-      @result = JSON.parse(res.body)
+      response = client.get(url, query, header)
+      @result = JSON.parse(response.body)
       render json: @result
     else
       render body: nil
