@@ -1,5 +1,5 @@
+require 'httpclient'
 class Potepan::SearchsController < ApplicationController
-  require 'httpclient'
   def suggest
     url = Rails.application.credentials.api[:url]
     key = Rails.application.credentials.api[:api_key]
