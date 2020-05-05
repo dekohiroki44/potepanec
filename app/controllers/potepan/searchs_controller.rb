@@ -1,16 +1,19 @@
 class Potepan::SearchsController < ApplicationController
   require 'httpclient'
-  require 'json'
   def suggest
     url = Rails.application.credentials.api[:url]
     key = Rails.application.credentials.api[:api_key]
-    header = { 'Authorization': "Bearer #{key}" }
+    headers = { 'Authorization': "Bearer #{key}" }
     client = HTTPClient.new
     if params[:keyword].present?
       query = { 'keyword': params[:keyword], 'max_num': params[:max_num] }
-      response = client.get(url, query, header)
+      response = client.get(url, query, headers)
       @result = JSON.parse(response.body)
-      render json: @result
+      if response.status == 200
+        render status: 200, json: @result
+      elsif response.status == 500
+        render status: 500, json: response.body
+      end
     else
       render body: nil
     end

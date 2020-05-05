@@ -7,10 +7,10 @@ $(function() {
         data: { keyword: req.term, max_num: 5 },
         dataType: 'json',
         success: function(data){
-        resp(data);
+          resp(data);
         },
         error: function(xhr, ts, err){
-        resp(['']);
+          resp(['']);
         },
       });
     },
