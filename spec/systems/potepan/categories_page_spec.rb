@@ -1,5 +1,4 @@
 require 'rails_helper'
-# WebMock.allow_net_connect!
 
 RSpec.describe 'categories_page', type: :system do
   let(:taxon) { create(:taxon) }
