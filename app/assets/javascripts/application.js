@@ -21,5 +21,4 @@
 //= require plugins/countdown/jquery.syotimer
 //= require js/custom
 //= require_self
-//= require turbolinks
 //= require_tree .

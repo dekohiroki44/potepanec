@@ -9,7 +9,7 @@
 # Offense count: 1
 Airbnb/SpecConstantAssignment:
   Exclude:
-    - 'spec/requests/potepan/searchs_spec.rb'
+    - 'spec/requests/potepan/searches_spec.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -31,4 +31,4 @@ Style/BlockComments:
 # SupportedStyles: literals, strict
 Style/MutableConstant:
   Exclude:
-    - 'spec/requests/potepan/searchs_spec.rb'
+    - 'spec/requests/potepan/searches_spec.rb'
