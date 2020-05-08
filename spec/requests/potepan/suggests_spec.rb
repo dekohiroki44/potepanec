@@ -2,12 +2,13 @@ require 'rails_helper'
 require 'webmock/rspec'
 require 'httpclient'
 WebMock.allow_net_connect!
-url = 'https://presite-potepanec-task5.herokuapp.com/potepan/api/suggests'
-key = Rails.application.credentials.api[:api_key]
-query = { 'keyword': 'a', 'max_num': 5 }
-headers = { 'Authorization': "Bearer #{key}" }
 
 RSpec.describe 'api_suggests', type: :request do
+  let(:url) { Rails.application.credentials.api[:url] }
+  let(:key) { Rails.application.credentials.api[:api_key] }
+  let(:query) { { 'keyword': 'a', 'max_num': 5 } }
+  let(:headers) { { 'Authorization': "Bearer #{key}" } }
+
   context 'when works normally' do
     it 'returns 200 status and correct suggestion' do
       WebMock.stub_request(:get, url).
