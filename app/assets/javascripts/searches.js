@@ -1,16 +1,16 @@
 $(function() {
   $('#suggest').autocomplete({
-    source: function(req, resp){
+    source: function(req, res){
       $.ajax({
         url: '/potepan/suggest',
         type: 'GET',
         data: { keyword: req.term, max_num: 5 },
         dataType: 'json',
         success: function(data){
-          resp(data);
+          res(data);
         },
         error: function(xhr, ts, err){
-          resp(['']);
+          res(['']);
         },
       });
     },
