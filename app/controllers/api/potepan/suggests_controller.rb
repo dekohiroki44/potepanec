@@ -3,11 +3,15 @@ class Api::Potepan::SuggestsController < ApplicationController
   before_action :authenticate
 
   def suggest
-    suggest = Potepan::Suggest.
-      where('keyword like ?', "#{params[:keyword]}%").
-      limit(params[:max_num]).
-      pluck(:keyword)
-    render json: suggest
+    if params[:max_num].present?
+      suggest = Potepan::Suggest.
+        where('keyword like ?', "#{params[:keyword]}%").
+        limit(params[:max_num]).
+        pluck(:keyword)
+      render json: suggest
+    else
+      render json: {}
+    end
   end
 
   protected
