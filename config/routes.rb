@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :potepan do
-      get 'suggest', to: 'suggests#suggest'
+      get 'suggests', to: 'suggests#index'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

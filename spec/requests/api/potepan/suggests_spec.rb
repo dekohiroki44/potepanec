@@ -11,20 +11,16 @@ RSpec.describe "suggest_api", type: :request do
 
   context 'When r and 5 parameters are received with authentication' do
     it 'returns 200 status and 5 suggestion about r' do
-      get '/api/potepan/suggest/?keyword=r&max_num=5', headers: { 'Authorization': "Bearer #{key}" }
+      get '/api/potepan/suggests/?keyword=r&max_num=5', headers: { 'Authorization': "Bearer #{key}" }
       json = JSON.parse(response.body)
       expect(response.status).to eq(200)
-      expect(json).to include suggest1.keyword,
-                              suggest2.keyword,
-                              suggest3.keyword,
-                              suggest4.keyword,
-                              suggest5.keyword
+      expect(json).to eq ["ruby", "ruby for women", "ruby for men", "rails", "rails for women"]
     end
   end
 
   context 'When r and 5 parameters are received without authentication' do
     it 'returns 401 status and error message' do
-      get '/api/potepan/suggest/?keyword=r&max_num=5'
+      get '/api/potepan/suggests/?keyword=r&max_num=5'
       expect(response.status).to eq(401)
       expect(response.body).to eq 'unauthorized'
     end
