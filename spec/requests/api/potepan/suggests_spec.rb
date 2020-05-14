@@ -19,10 +19,10 @@ RSpec.describe "suggest_api", type: :request do
   end
 
   context 'When there is no keyword parameter with authentication' do
-    it 'returns 422 status and blank' do
+    it 'returns 422 status and error message' do
       get '/api/potepan/suggests/?keyword=&max_num=5', headers: { 'Authorization': "Bearer #{key}" }
       expect(response.status).to eq(422)
-      expect(response.body).to eq '{}'
+      expect(response.body).to eq 'Unprocessable Entity'
     end
   end
 

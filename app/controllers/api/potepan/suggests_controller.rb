@@ -4,32 +4,30 @@ class Api::Potepan::SuggestsController < ApplicationController
 
   def index
     if params[:keyword].present?
-      if params[:max_num].blank?
-        params[:max_num] = 5
-      end
+      params[:max_num] = 5 if params[:max_num].blank?
       suggests = Potepan::Suggest.
         where('keyword like ?', "#{params[:keyword]}%").
         limit(params[:max_num]).
         pluck(:keyword)
       render status: 200, json: suggests
     else
-      render status: 422, json: {}
+      render status: 422, json: 'Unprocessable Entity'
     end
   end
 
-  protected
+  private
 
   def authenticate
     authenticate_token || render_unauthorized
   end
 
   def authenticate_token
-    authenticate_with_http_token do |token, options|
+    authenticate_with_http_token do |token, _|
       token == Rails.application.credentials.api[:api_key]
     end
   end
 
   def render_unauthorized
-    render json: 'unauthorized', status: 401
+    render status: 401, json: 'unauthorized'
   end
 end
