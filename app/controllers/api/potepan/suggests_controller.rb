@@ -4,10 +4,14 @@ class Api::Potepan::SuggestsController < ApplicationController
 
   def index
     if params[:keyword].present?
-      params[:max_num] = 5 if params[:max_num].blank?
+      if params[:max_num].present?
+        num = params[:max_num]
+      else
+        num = 5
+      end
       suggests = Potepan::Suggest.
         where('keyword like ?', "#{params[:keyword]}%").
-        limit(params[:max_num]).
+        limit(num).
         pluck(:keyword)
       render status: 200, json: suggests
     else
